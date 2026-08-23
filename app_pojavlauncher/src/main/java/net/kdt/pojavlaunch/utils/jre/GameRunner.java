@@ -3,6 +3,7 @@ package net.kdt.pojavlaunch.utils.jre;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.widget.Toast;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
