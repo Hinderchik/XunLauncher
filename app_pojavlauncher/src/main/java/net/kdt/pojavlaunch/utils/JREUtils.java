@@ -75,22 +75,26 @@ public class JREUtils {
     }
 
     private static String findMobileGluesPath(Context context) {
-        // 1. Через LibraryPlugin (самый правильный способ)
+        // 1. Через LibraryPlugin (используем геттеры)
         LibraryPlugin mobileGlues = LibraryPlugin.discoverPlugin(context, LibraryPlugin.ID_MOBILEGLUES_PLUGIN);
         if (mobileGlues != null) {
-            // Проверяем libraryPath
-            if (mobileGlues.libraryPath != null) {
-                File libFile = new File(mobileGlues.libraryPath, "libmobileglues.so");
+            // Используем геттер getLibraryPath()
+            String libraryPath = mobileGlues.getLibraryPath();
+            if (libraryPath != null) {
+                // Используем resolveAbsolutePath() для получения полного пути
+                String fullPath = mobileGlues.resolveAbsolutePath("libmobileglues.so");
+                File libFile = new File(fullPath);
                 if (libFile.exists()) {
-                    Log.d("XunLauncher", "✅ Found MobileGlues at: " + libFile.getAbsolutePath());
-                    return libFile.getAbsolutePath();
+                    Log.d("XunLauncher", "✅ Found MobileGlues at: " + fullPath);
+                    return fullPath;
                 }
             }
 
-            // Ищем через sourceDir (для Android 8+)
+            // Если resolveAbsolutePath не сработал — пробуем через PackageManager
             try {
                 PackageManager pm = context.getPackageManager();
-                PackageInfo pkgInfo = pm.getPackageInfo(mobileGlues.appId, 0);
+                String appId = mobileGlues.getId(); // Используем геттер getId()
+                PackageInfo pkgInfo = pm.getPackageInfo(appId, 0);
                 String apkPath = pkgInfo.applicationInfo.sourceDir;
                 String basePath = apkPath.substring(0, apkPath.lastIndexOf('/'));
 
@@ -104,11 +108,11 @@ public class JREUtils {
                     }
                 }
             } catch (PackageManager.NameNotFoundException e) {
-                // Игнорируем
+                Log.e("XunLauncher", "Package not found", e);
             }
         }
-    
-        // 2. Рекурсивный поиск в /data/app (на случай, если LibraryPlugin не сработал)
+
+        // 2. Рекурсивный поиск в /data/app (если LibraryPlugin не сработал)
         File dataApp = new File("/data/app");
         if (dataApp.exists() && dataApp.isDirectory()) {
             File[] dirs = dataApp.listFiles();
@@ -127,21 +131,7 @@ public class JREUtils {
                 }
             }
         }
-    
-        // 3. Проверяем стандартные пути (на всякий случай)
-        String[] standardPaths = {
-            "/data/data/com.fcl.plugin.mobileglues/lib/libmobileglues.so",
-            "/data/app/com.fcl.plugin.mobileglues/lib/arm64/libmobileglues.so",
-            "/system/lib/libmobileglues.so",
-            "/system/lib64/libmobileglues.so",
-        };
-        for (String path : standardPaths) {
-            if (new File(path).exists()) {
-                Log.d("XunLauncher", "✅ Found MobileGlues at standard path: " + path);
-                return path;
-            }
-        }
-    
+
         Log.e("XunLauncher", "❌ Could not find libmobileglues.so anywhere!");
         return null;
     }

@@ -141,7 +141,7 @@ public class GameRunner {
     }
 
     public static void launchGame(final AppCompatActivity activity, Account account,
-                                  Instance instance, String versionId, File[] classpath, String rendererName) throws Throwable {
+                                  Instance instance, String versionId, File[] classpath, Context context, String rendererName) throws Throwable {
         int freeDeviceMemory = Tools.getFreeDeviceMemory(activity);
         int localeString;
         int freeAddressSpace = Architecture.is32BitsDevice() ? Tools.getMaxContinuousAddressSpaceSize() : -1;
@@ -262,7 +262,7 @@ public class GameRunner {
         if(rendererLibrary == null) {
             Log.i("GameRunner", "Falling back to GL4ES 1.1.4");
             rendererName = "opengles2";
-            rendererLibrary = JREUtils.loadGraphicsLibrary(rendererName);
+            rendererLibrary = JREUtils.loadGraphicsLibrary(context, rendererName);
         }
         if(rendererLibrary == null) {
             if(showDialog(activity, R.string.gr_err_renderer_load_Failed)) return;
