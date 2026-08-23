@@ -1,6 +1,6 @@
-<img src="https://raw.githubusercontent.com/Hinderchik/XunLauncher/blob/master/app_pojavlauncher/src/main/res/drawable-xxxhdpi/notif_icon.png" width="48" height="48"> XunLauncher
+<p align="center"> <img src="https://raw.githubusercontent.com/Hinderchik/XunLauncher/master/app_pojavlauncher/src/main/res/drawable-xxxhdpi/notif_icon.png" width="96" height="96" alt="XunLauncher Icon"> </p><h1 align="center">XunLauncher</h1> <h3 align="center">Minecraft: Java Edition на Android — с улучшенной графикой</h3><p align="center"> <a href="https://github.com/Hinderchik/XunLauncher/releases"> <img src="https://img.shields.io/github/v/release/Hinderchik/XunLauncher?style=for-the-badge&logo=github&color=blue" alt="GitHub release"> </a> <a href="https://github.com/Hinderchik/XunLauncher/actions"> <img src="https://img.shields.io/github/actions/workflow/status/Hinderchik/XunLauncher/build.yml?style=for-the-badge&logo=githubactions&color=orange" alt="Build Status"> </a> <a href="https://www.gnu.org/licenses/lgpl-3.0.html"> <img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg?style=for-the-badge&logo=gnu&color=green" alt="License"> </a> <a href="https://github.com/Hinderchik/XunLauncher/stargazers"> <img src="https://img.shields.io/github/stars/Hinderchik/XunLauncher?style=for-the-badge&logo=github&color=yellow" alt="Stars"> </a> </p>
 
-### **Minecraft: Java Edition на Android — с улучшенной графикой**
+### **Minecraft: Java Edition на Android — с новым рендером!**
 
 [![GitHub release](https://img.shields.io/github/v/release/Hinderchik/XunLauncher?style=for-the-badge&logo=github)](https://github.com/Hinderchik/XunLauncher/releases)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Hinderchik/XunLauncher/build.yml?style=for-the-badge&logo=githubactions)](https://github.com/Hinderchik/XunLauncher/actions)
@@ -125,7 +125,6 @@
 ## 📧 Контакты
 
 - **GitHub Issues** — для багов и предложений
-- **Telegram** — (скоро)
 
 ---
 
@@ -138,7 +137,3 @@
     <img src="https://img.shields.io/badge/⭐%20Star%20on%20GitHub-30363D?style=for-the-badge&logo=github" alt="Star on GitHub">
   </a>
 </p>
-
----
-
-Этот README готов к использованию. Вы можете дополнить его реальными скриншотами и ссылками по мере развития проекта.
