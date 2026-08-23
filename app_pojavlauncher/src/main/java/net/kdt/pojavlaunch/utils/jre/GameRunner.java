@@ -258,7 +258,7 @@ public class GameRunner {
         JREUtils.setEnviroimentForGame(activity, rendererName);
         JREUtils.chdir(instance.getGameDirectory().getAbsolutePath());
 
-        String rendererLibrary = JREUtils.loadGraphicsLibrary(rendererName);
+        String rendererLibrary = JREUtils.loadGraphicsLibrary(context, rendererName);
         if(rendererLibrary == null) {
             Log.i("GameRunner", "Falling back to GL4ES 1.1.4");
             rendererName = "opengles2";

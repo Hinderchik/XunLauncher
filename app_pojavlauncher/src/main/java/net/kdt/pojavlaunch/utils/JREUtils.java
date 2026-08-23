@@ -7,9 +7,15 @@ import static net.kdt.pojavlaunch.prefs.LauncherPreferences.PREF_ZINK_PREFER_SYS
 import android.content.*;
 import android.system.*;
 import android.util.*;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageInfo;
+
+import java.io.File;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.*;
@@ -72,9 +78,9 @@ public class JREUtils {
         // 1. Через LibraryPlugin (самый правильный способ)
         LibraryPlugin mobileGlues = LibraryPlugin.discoverPlugin(context, LibraryPlugin.ID_MOBILEGLUES_PLUGIN);
         if (mobileGlues != null) {
-            // Проверяем nativeLibraryDir
-            if (mobileGlues.nativeLibraryDir != null) {
-                File libFile = new File(mobileGlues.nativeLibraryDir, "libmobileglues.so");
+            // Проверяем libraryPath
+            if (mobileGlues.libraryPath != null) {
+                File libFile = new File(mobileGlues.libraryPath, "libmobileglues.so");
                 if (libFile.exists()) {
                     Log.d("XunLauncher", "✅ Found MobileGlues at: " + libFile.getAbsolutePath());
                     return libFile.getAbsolutePath();
@@ -84,7 +90,7 @@ public class JREUtils {
             // Ищем через sourceDir (для Android 8+)
             try {
                 PackageManager pm = context.getPackageManager();
-                PackageInfo pkgInfo = pm.getPackageInfo(mobileGlues.packageName, 0);
+                PackageInfo pkgInfo = pm.getPackageInfo(mobileGlues.appId, 0);
                 String apkPath = pkgInfo.applicationInfo.sourceDir;
                 String basePath = apkPath.substring(0, apkPath.lastIndexOf('/'));
 
