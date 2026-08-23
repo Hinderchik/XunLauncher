@@ -30,31 +30,41 @@ public class RendererCompatUtil {
 
     private static String findVirGLPath() {
         String[] paths = {"/vendor/lib64/libvirglrenderer.so", "/system/lib64/libvirglrenderer.so", "/vendor/lib/libvirglrenderer.so", "/system/lib/libvirglrenderer.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
+        for (int i = 0; i < paths.length; i++) {
+            if (new File(paths[i]).exists()) return paths[i];
+        }   
         return null;
     }
 
     private static String findSwiftShaderPath() {
         String[] paths = {"/system/lib64/libswiftshader_libGLESv2.so", "/system/lib/libswiftshader_libGLESv2.so", "/vendor/lib64/libswiftshader_libGLESv2.so", "/vendor/lib/libswiftshader_libGLESv2.so"};
-        or (String path : paths) if (new File(path).exists()) return path;
+        for (int i = 0; i < paths.length; i++) {
+            if (new File(paths[i]).exists()) return paths[i];
+        }   
         return null;
     }   
 
     private static String findPanfrostPath() {
         String[] paths = {"/vendor/lib64/libPanfrost.so", "/system/lib64/libPanfrost.so", "/vendor/lib/libPanfrost.so", "/system/lib/libPanfrost.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
+        for (int i = 0; i < paths.length; i++) {
+            if (new File(paths[i]).exists()) return paths[i];
+        }   
         return null;
     }
 
     private static String findTurnipPath() {
         String[] paths = {"/vendor/lib64/libvulkan_turnip.so", "/system/lib64/libvulkan_turnip.so", "/vendor/lib/libvulkan_turnip.so", "/system/lib/libvulkan_turnip.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
+        for (int i = 0; i < paths.length; i++) {
+            if (new File(paths[i]).exists()) return paths[i];
+        }           
         return null;
     }
 
     private static String findLLVMpipePath() {
         String[] paths = {"/vendor/lib64/libllvmpipe.so", "/system/lib64/libllvmpipe.so", "/vendor/lib/libllvmpipe.so", "/system/lib/libllvmpipe.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
+        for (int i = 0; i < paths.length; i++) {
+            if (new File(paths[i]).exists()) return paths[i];
+        } 
         return null;
     }
 
