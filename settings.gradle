@@ -1,0 +1,39 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+rootProject.name='XunLauncher'
+
+def ensureCheckout = { String path, String url ->
+    def dir = file(path)
+    if(dir.exists()) return
+    def result = providers.exec {
+        commandLine 'git', 'clone', url, path
+    }.result.get()
+    if(result.exitValue != 0) {
+        throw new GradleException("Failed to clone ${url} into ${path}")
+    }
+}
+
+ensureCheckout('glfw', 'https://github.com/MojoLauncher/glfw')
+ensureCheckout('mojoexec', 'https://github.com/MojoLauncher/mojoexec')
+ensureCheckout('sdl', 'https://github.com/MojoLauncher/MojoSDL')
+
+include ':app_pojavlauncher'
+
+include ':forge_installer'
+include ':glfw:jni_bindings'
+include ':mojoexec:jni_bindings'
+include ':sdl:jni_bindings'
