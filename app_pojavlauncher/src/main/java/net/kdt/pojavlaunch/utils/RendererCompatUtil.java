@@ -28,6 +28,36 @@ public class RendererCompatUtil {
         return false;
     }
 
+    private static String findVirGLPath() {
+        String[] paths = {"/vendor/lib64/libvirglrenderer.so", "/system/lib64/libvirglrenderer.so", "/vendor/lib/libvirglrenderer.so", "/system/lib/libvirglrenderer.so"};
+        for (String path : paths) if (new File(path).exists()) return path;
+        return null;
+    }
+
+    private static String findSwiftShaderPath() {
+        String[] paths = {"/system/lib64/libswiftshader_libGLESv2.so", "/system/lib/libswiftshader_libGLESv2.so", "/vendor/lib64/libswiftshader_libGLESv2.so", "/vendor/lib/libswiftshader_libGLESv2.so"};
+        or (String path : paths) if (new File(path).exists()) return path;
+        return null;
+    }   
+
+    private static String findPanfrostPath() {
+        String[] paths = {"/vendor/lib64/libPanfrost.so", "/system/lib64/libPanfrost.so", "/vendor/lib/libPanfrost.so", "/system/lib/libPanfrost.so"};
+        for (String path : paths) if (new File(path).exists()) return path;
+        return null;
+    }
+
+    private static String findTurnipPath() {
+        String[] paths = {"/vendor/lib64/libvulkan_turnip.so", "/system/lib64/libvulkan_turnip.so", "/vendor/lib/libvulkan_turnip.so", "/system/lib/libvulkan_turnip.so"};
+        for (String path : paths) if (new File(path).exists()) return path;
+        return null;
+    }
+
+    private static String findLLVMpipePath() {
+        String[] paths = {"/vendor/lib64/libllvmpipe.so", "/system/lib64/libllvmpipe.so", "/vendor/lib/libllvmpipe.so", "/system/lib/libllvmpipe.so"};
+        for (String path : paths) if (new File(path).exists()) return path;
+        return null;
+    }
+
     /** Return the renderers that are compatible with this device */
     public static RenderersList getCompatibleRenderers(Context context) {
         if(sCompatibleRenderers != null) return sCompatibleRenderers;
@@ -49,8 +79,8 @@ public class RendererCompatUtil {
         boolean hasPanfrost = findPanfrostPath() != null;
         boolean hasTurnip = findTurnipPath() != null;
         boolean hasLLVMpipe = findLLVMpipePath() != null;
-        boolean isMali = GLInfoUtils.getGlInfo().isMali();
-        boolean isAdreno = GLInfoUtils.getGlInfo().isAdreno();
+        boolean isMali = GLInfoUtils.getGlInfo().isMali;
+        boolean isAdreno = GLInfoUtils.getGlInfo().isAdreno;
         List<String> rendererIds = new ArrayList<>(defaultRenderers.length);
         List<String> rendererNames = new ArrayList<>(defaultRendererNames.length);
         for(int i = 0; i < defaultRenderers.length; i++) {
@@ -61,12 +91,12 @@ public class RendererCompatUtil {
             if(rendererId.contains("freedreno") && (!(GLInfoUtils.getGlInfo().isAdreno()) || !deviceCompatibleMesa)) continue;
             if(rendererId.contains("ltw") && (!deviceHasOpenGLES3 || !appHasLtw)) continue;
             if(rendererId.contains("mobileglues") && (!deviceHasOpenGLES3 || !hasMobileGlues)) continue;
-            if (id.contains("angle") && !hasAngle) continue;
-            if (id.contains("virgl") && !hasVirGL) continue;
-            if (id.contains("swiftshader") && !hasSwiftShader) continue;
-            if (id.contains("panfrost") && (!hasPanfrost || !isMali)) continue;
-            if (id.contains("turnip") && (!hasTurnip || !isAdreno)) continue;
-            if (id.contains("llvmpipe") && !hasLLVMpipe) continue;
+            if(rendererId.contains("angle") && !hasAngle) continue;
+            if(rendererId.contains("virgl") && !hasVirGL) continue;
+            if(rendererId.contains("swiftshader") && !hasSwiftShader) continue;
+            if(rendererId.contains("panfrost") && (!hasPanfrost || !isMali)) continue;
+            if(rendererId.contains("turnip") && (!hasTurnip || !isAdreno)) continue;
+            if(rendererId.contains("llvmpipe") && !hasLLVMpipe) continue;
             rendererIds.add(rendererId);
             rendererNames.add(defaultRendererNames[i]);
         }

@@ -74,56 +74,6 @@ public class JREUtils {
 
     }
 
-    private static String findAnglePath(Context context, String backend) {
-        String angleId = "com.google.angle";
-        LibraryPlugin angle = LibraryPlugin.discoverPlugin(context, angleId);
-        if (angle != null) {
-            String libName = backend.equals("vulkan") ? "libGLESv2_angle_vulkan.so" : "libGLESv2_angle_directx.so";
-            String path = angle.resolveAbsolutePath(libName);
-            if (new File(path).exists()) return path;
-        }
-        String[] paths = {
-            "/system/lib64/libGLESv2_angle_" + backend + ".so",
-            "/system/lib/libGLESv2_angle_" + backend + ".so",
-            "/vendor/lib64/libGLESv2_angle_" + backend + ".so",
-            "/vendor/lib/libGLESv2_angle_" + backend + ".so",
-        };
-        for (String path : paths) {
-            if (new File(path).exists()) return path;
-        }
-        return null;
-    }
-
-    private static String findVirGLPath() {
-        String[] paths = {"/vendor/lib64/libvirglrenderer.so", "/system/lib64/libvirglrenderer.so", "/vendor/lib/libvirglrenderer.so", "/system/lib/libvirglrenderer.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
-        return null;
-    }
-
-    private static String findSwiftShaderPath() {
-        String[] paths = {"/system/lib64/libswiftshader_libGLESv2.so", "/system/lib/libswiftshader_libGLESv2.so", "/vendor/lib64/libswiftshader_libGLESv2.so", "/vendor/lib/libswiftshader_libGLESv2.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
-        return null;
-    }
-
-    private static String findPanfrostPath() {
-        String[] paths = {"/vendor/lib64/libPanfrost.so", "/system/lib64/libPanfrost.so", "/vendor/lib/libPanfrost.so", "/system/lib/libPanfrost.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
-        return null;
-    }
-
-    private static String findTurnipPath() {
-        String[] paths = {"/vendor/lib64/libvulkan_turnip.so", "/system/lib64/libvulkan_turnip.so", "/vendor/lib/libvulkan_turnip.so", "/system/lib/libvulkan_turnip.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
-        return null;
-    }
-
-    private static String findLLVMpipePath() {
-        String[] paths = {"/vendor/lib64/libllvmpipe.so", "/system/lib64/libllvmpipe.so", "/vendor/lib/libllvmpipe.so", "/system/lib/libllvmpipe.so"};
-        for (String path : paths) if (new File(path).exists()) return path;
-        return null;
-    }
-
     private static String findMobileGluesPath(Context context) {
         // 1. Через LibraryPlugin (используем геттеры)
         LibraryPlugin mobileGlues = LibraryPlugin.discoverPlugin(context, LibraryPlugin.ID_MOBILEGLUES_PLUGIN);
