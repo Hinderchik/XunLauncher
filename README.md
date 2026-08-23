@@ -1,88 +1,144 @@
-<H1 align="center">MojoLauncher (a.k.a. MJLauncher)</H1>
+<img src="https://raw.githubusercontent.com/MojoLauncher/MojoLauncher/master/app_pojavlauncher/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="48" height="48" alt="XunLauncher Icon"> XunLauncher
 
-<a href="./README_RU.md">Readme на русском</a>
+### **Minecraft: Java Edition на Android — с улучшенной графикой**
 
-<img src="./app_pojavlauncher/src/main/assets/pojavlauncher.png" align="left" width="150" height="150" alt="MojoLauncher logo">
+[![GitHub release](https://img.shields.io/github/v/release/Hinderchik/XunLauncher?style=for-the-badge&logo=github)](https://github.com/Hinderchik/XunLauncher/releases)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Hinderchik/XunLauncher/build.yml?style=for-the-badge&logo=githubactions)](https://github.com/Hinderchik/XunLauncher/actions)
+[![License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg?style=for-the-badge&logo=gnu)](https://www.gnu.org/licenses/lgpl-3.0.html)
 
-[![Android CI](https://github.com/MojoLauncher/MojoLauncher/workflows/Android%20CI/badge.svg)](https://github.com/MojoLauncher/MojoLauncher/actions)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MojoLauncher/MojoLauncher)](https://github.com/MojoLauncher/MojoLauncher/actions)
-[![Discord](https://img.shields.io/discord/1365346109131722753.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/VHdwQFsaGX)
+---
 
-* MojoLauncher is a launcher, based on [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher), that allows you to play Minecraft: Java Edition on your Android device!
+## 🚀 О проекте
 
-* It can run almost every version of Minecraft, allowing you to use .jar only installers to install modloaders such as [Forge](https://files.minecraftforge.net/) and [Fabric](http://fabricmc.net/) and mods like [OptiFine](https://optifine.net).
+**XunLauncher** — это мощный форк [MojoLauncher](https://github.com/MojoLauncher/MojoLauncher), созданный для того, чтобы выжать максимум из вашего Android-устройства в Minecraft: Java Edition.
 
-## Navigation
-- [Introduction](#introduction)
-- [Getting MojoLauncher](#getting-mojolauncher)
-- [Building](#building) 
-- [Current roadmap](#current-roadmap) 
-- [License](#license) 
-- [Contributing](#contributing) 
-- [Credits & Third party components and their licenses](#credits--third-party-components-and-their-licenses-if-available)
+### ✨ Ключевые особенности
 
-## Introduction 
-* MojoLauncher is a Minecraft: Java Edition launcher for Android based on [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher)
-* This launcher can launch almost all available Minecraft versions ranging from rd-132211 to 26.x snapshots (including Combat Test versions). 
-* Modding via Forge and Fabric are also supported. 
+- 🎮 **Запуск почти всех версий** — от rd-132211 до последних снапшотов 26.x
+- 📦 **Поддержка модлоадеров** — Forge, Fabric и другие через `.jar`-установщики
+- 🖥️ **Полноценный рендеринг** — LWJGL2, LWJGL3, GLFW
+- 🌍 **Мультиязычность** — интерфейс на многих языках мира
 
-## Getting MojoLauncher
+---
 
-You can get MojoLauncher via four methods:
+## 🔥 Что нового в XunLauncher?
 
-1. You can get the prebuilt app from the [releases section](http://github.com/mojolauncher/mojolauncher/releases).
+### ⚡ Интеграция MobileGlues
 
-2. You can get it from Google Play by clicking on this badge:
-[![Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=git.artdeell.mjlaunch)
+Этот форк включает **MobileGlues** — библиотеку, которая значительно расширяет графические возможности:
 
-3. You can get early builds from [Github Actions](http://github.com/mojolauncher/mojolauncher/actions).
+- ✅ **Более широкая совместимость** с различными GPU и драйверами
+- ✅ **Улучшенная производительность** за счёт оптимизаций рендеринга
+- ✅ **Поддержка сложных шейдеров** и текстурных атласов, которые ранее могли работать некорректно
+- ✅ **Стабильность** на устройствах с экзотическими графическими чипами
 
-4. You can [build](#building) from source.
-## Building   
-* Build the launcher (it will automatically download all required components)
-```
+Теперь вы можете наслаждаться тяжёлыми модпаками и красивой графикой без лишних «артефактов» и тормозов!
+
+---
+
+## 📥 Скачать
+
+Вы можете получить XunLauncher несколькими способами:
+
+| Способ | Описание |
+|--------|----------|
+| [**Releases**](https://github.com/Hinderchik/XunLauncher/releases) | Стабильные сборки |
+| **Google Play** | (скоро) |
+| [**GitHub Actions**](https://github.com/Hinderchik/XunLauncher/actions) | Свежие ночные сборки |
+| **Сборка из исходников** | Инструкции ниже |
+
+---
+
+## 🛠️ Сборка из исходников
+
+Для сборки вам потребуется JDK 17+ и Android SDK.
+
+### На Linux / macOS
+```bash
 ./gradlew :app_pojavlauncher:assembleDebug
 ```
-(Replace `./gradlew` with `.\gradlew.bat` if you are building on Windows).
 
-## Current roadmap
-- [x] Instance system in favor of profiles
-- [x] Out-of-the box 1.21.5 support
-- [x] mrpack/CurseForge zip import
-- [ ] LTW: resolve issues with Create
-- [ ] LTW: enable compute shader/image extensions
-- [ ] LTW: switch to a color-renderable format for framebuffers
-- [ ] Modpack/mod management tool
-- [ ] MMC-compatible instance import
-- [ ] Implement common native library standard
+### На Windows
+```bash
+.\gradlew.bat :app_pojavlauncher:assembleDebug
+```
 
-## Known Issues
-- Some physical mice may have very slow mouse speed
-- On Holy GL4ES, large texture atlases may be distorted (resulting in stretched/blocky textures in modpacks)
-- Probably more, that's why we have a bug tracker ;) 
+Сборка автоматически загрузит все необходимые компоненты (OpenJDK, библиотеки рендеринга и т.д.).
 
-## License
-- MojoLauncher is licensed under [GNU LGPLv3](https://github.com/MojoLauncher/MojoLauncher/blob/v3_openjdk/LICENSE).
+---
 
-## Contributing
-Contributions are welcome! We welcome any type of contribution, not only code. For example, you can help the wiki shape up. You can help the [translation](https://crowdin.com/project/pojavlauncher) too!
+## 📋 Текущий план развития
 
+- [x] Интеграция MobileGlues
+- [ ] Полноценная система инстансов вместо профилей
+- [ ] Поддержка 1.21.5 «из коробки»
+- [ ] Импорт модпаков `.mrpack` и CurseForge `.zip`
+- [ ] Исправление проблем с Create и другими сложными модами
+- [ ] Улучшенный менеджер модов и модпаков
 
-Any code change to this repository should be submitted as a pull request. The description should explain what the code does and give steps to execute it.
+---
 
-## Third party components, licenses and sources (when applicable)
-- [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher): [GNU LGPLv3 License](https://github.com/PojavLauncherTeam/PojavLauncher/blob/v3_openjdk/LICENSE)
-- [Boardwalk](https://github.com/zhuowei/Boardwalk) (JVM Launcher): Unknown License/[Apache License 2.0](https://github.com/zhuowei/Boardwalk/blob/master/LICENSE) or GNU GPLv2.
-- Android Support Libraries: [Apache License 2.0](https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt).
-- [Holy GL4ES](https://github.com/artdeell/gl4es_extra_extra/): [MIT License](https://github.com/ptitSeb/gl4es/blob/master/LICENSE).<br>
-- [OpenJDK](https://github.com/PojavLauncherTeam/openjdk-multiarch-jdk8u): [GNU GPLv2 License](https://openjdk.java.net/legal/gplv2+ce.html).<br>
-- [GLFW](https://github.com/MojoLauncher/glfw): [zlib license](https://github.com/MojoLauncher/glfw/blob/glfw34/LICENSE.md)
-- [LWJGL2-GLFW](https://github.com/MojoLauncher/lwjgl2-glfw): 3-Clause BSD license
-- [LWJGL3](https://github.com/LWJGL/lwjgl3): [BSD-3 License](https://github.com/LWJGL/lwjgl3/blob/master/LICENSE.md).
-- [Mesa 3D Graphics Library](https://gitlab.freedesktop.org/mesa/mesa): [MIT License](https://docs.mesa3d.org/license.html).
-- [pro-grade](https://github.com/pro-grade/pro-grade) (Java sandboxing security manager): [Apache License 2.0](https://github.com/pro-grade/pro-grade/blob/master/LICENSE.txt).
-- [bhook](https://github.com/bytedance/bhook) (Used for exit code trapping): [MIT license](https://github.com/bytedance/bhook/blob/main/LICENSE).
-- [Authlib-Injector](https://github.com/yushijinhun/authlib-injector) (Used for authorisation via ely.by): [AGPL-3.0](https://github.com/yushijinhun/authlib-injector/blob/develop/LICENSE).
-- [alsoft](https://github.com/kcat/openal-soft/) (Audio output library): [GNU LIBRARY GENERAL PUBLIC LICENSE](https://github.com/kcat/openal-soft/blob/master/COPYING) and [modified PFFFT](https://github.com/kcat/openal-soft/blob/master/LICENSE-pffft).
-- [oboe](https://github.com/google/oboe): [Apache License 2.0](https://github.com/google/oboe/blob/main/LICENSE).
-- Thanks to [Mineskin](https://mineskin.eu/) for providing Minecraft avatars.
+## ⚠️ Известные проблемы
+
+- На некоторых физических мышах скорость курсора может быть низкой
+- На некоторых устройствах с Holy GL4ES могут быть искажения больших текстурных атласов
+- Остальные баги — см. [Issues](https://github.com/Hinderchik/XunLauncher/issues)
+
+---
+
+## 🤝 Участие в разработке
+
+Мы приветствуем любые вклады!
+
+- 🐛 **Сообщайте об ошибках** — создавайте Issues
+- 🌐 **Помогайте с переводами** — мы используем Crowdin
+- 💻 **Присылайте Pull Requests** — с описанием изменений
+
+---
+
+## 📜 Лицензия
+
+Проект распространяется под лицензией **GNU LGPLv3**.
+
+### Благодарности и сторонние компоненты
+
+| Компонент | Лицензия |
+|-----------|----------|
+| [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) | GNU LGPLv3 |
+| [MojoLauncher](https://github.com/MojoLauncher/MojoLauncher) | GNU LGPLv3 |
+| [MobileGlues](https://github.com/mobileglues/mobileglues) | MIT |
+| OpenJDK | GNU GPLv2 |
+| GLFW | zlib |
+| LWJGL2 / LWJGL3 | BSD |
+| Mesa 3D | MIT |
+| Authlib-Injector | AGPL-3.0 |
+| И другие... | См. полный список в LICENSE |
+
+---
+
+## 📱 Скриншоты
+
+> *Скоро здесь появятся скриншоты с демонстрацией работы MobileGlues!*
+
+---
+
+## 📧 Контакты
+
+- **GitHub Issues** — для багов и предложений
+- **Telegram** — (скоро)
+
+---
+
+<p align="center">
+  <b>Играйте в Minecraft на Android с XunLauncher — графикой, которую вы заслуживаете!</b>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Hinderchik/XunLauncher">
+    <img src="https://img.shields.io/badge/⭐%20Star%20on%20GitHub-30363D?style=for-the-badge&logo=github" alt="Star on GitHub">
+  </a>
+</p>
+
+---
+
+Этот README готов к использованию. Вы можете дополнить его реальными скриншотами и ссылками по мере развития проекта.
