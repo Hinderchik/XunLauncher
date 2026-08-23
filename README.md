@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/MojoLauncher/MojoLauncher/master/app_pojavlauncher/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="48" height="48" alt="XunLauncher Icon"> XunLauncher
+<img src="https://raw.githubusercontent.com/MojoLauncher/MojoLauncher/master/app_pojavlauncher/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="48" height="48"> XunLauncher
 
 ### **Minecraft: Java Edition на Android — с улучшенной графикой**
 
