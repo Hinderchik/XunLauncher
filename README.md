@@ -1,131 +1,174 @@
-<p align="center"> <img src="https://raw.githubusercontent.com/Hinderchik/XunLauncher/master/app_pojavlauncher/src/main/res/drawable-xxxhdpi/notif_icon.png" width="96" height="96" alt="XunLauncher Icon"> </p><h1 align="center">XunLauncher</h1> <h3 align="center">Minecraft: Java Edition на Android — с новым рендером!</h3><p align="center"> <a href="https://github.com/Hinderchik/XunLauncher/releases"> <img src="https://img.shields.io/github/v/release/Hinderchik/XunLauncher?style=for-the-badge&logo=github&color=blue" alt="GitHub release"> </a> <a href="https://github.com/Hinderchik/XunLauncher/actions"> <img src="https://img.shields.io/github/actions/workflow/status/Hinderchik/XunLauncher/build.yml?style=for-the-badge&logo=githubactions&color=orange" alt="Build Status"> </a> <a href="https://www.gnu.org/licenses/lgpl-3.0.html"> <img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg?style=for-the-badge&logo=gnu&color=green" alt="License"> </a> <a href="https://github.com/Hinderchik/XunLauncher/stargazers"> <img src="https://img.shields.io/github/stars/Hinderchik/XunLauncher?style=for-the-badge&logo=github&color=yellow" alt="Stars"> </a> </p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Hinderchik/XunLauncher/master/app_pojavlauncher/src/main/res/drawable-xxxhdpi/notif_icon.png" width="96" height="96" alt="XunLauncher Icon">
+</p>
 
-## 🚀 О проекте
+<h1 align="center">XunLauncher</h1>
+<h3 align="center">Minecraft: Java Edition на Android — с расширенной графикой</h3>
 
-**XunLauncher** — это мощный форк [MojoLauncher](https://github.com/MojoLauncher/MojoLauncher), созданный для того, чтобы выжать максимум из вашего Android-устройства в Minecraft: Java Edition.
-
-### ✨ Ключевые особенности
-
-- 🎮 **Запуск почти всех версий** — от rd-132211 до последних снапшотов 26.x
-- 📦 **Поддержка модлоадеров** — Forge, Fabric и другие через `.jar`-установщики
-- 🖥️ **Полноценный рендеринг** — LWJGL2, LWJGL3, GLFW
-- 🌍 **Мультиязычность** — интерфейс на многих языках мира
+<p align="center">
+  <a href="https://github.com/Hinderchik/XunLauncher/releases">
+    <img src="https://img.shields.io/github/v/release/Hinderchik/XunLauncher?style=for-the-badge&logo=github&color=blue" alt="GitHub release">
+  </a>
+  <a href="https://github.com/Hinderchik/XunLauncher/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/Hinderchik/XunLauncher/build.yml?style=for-the-badge&logo=githubactions&color=orange" alt="Build Status">
+  </a>
+  <a href="https://www.gnu.org/licenses/lgpl-3.0.html">
+    <img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg?style=for-the-badge&logo=gnu&color=green" alt="License">
+  </a>
+  <a href="https://github.com/Hinderchik/XunLauncher/stargazers">
+    <img src="https://img.shields.io/github/stars/Hinderchik/XunLauncher?style=for-the-badge&logo=github&color=yellow" alt="Stars">
+  </a>
+</p>
 
 ---
 
-## 🔥 Что нового в XunLauncher?
+## 🎮 О проекте
 
-### ⚡ Интеграция MobileGlues
+**XunLauncher** — это форк [MojoLauncher](https://github.com/MojoLauncher/MojoLauncher), который позволяет запускать **Minecraft: Java Edition** на устройствах с **Android**.
 
-Этот форк включает **MobileGlues** — библиотеку, которая значительно расширяет графические возможности:
+Главное отличие — **расширенная поддержка графических рендеров**, включая **MobileGlues** и множество других бэкендов для максимальной совместимости и производительности.
 
-- ✅ **Более широкая совместимость** с различными GPU и драйверами
-- ✅ **Улучшенная производительность** за счёт оптимизаций рендеринга
-- ✅ **Поддержка сложных шейдеров** и текстурных атласов, которые ранее могли работать некорректно
-- ✅ **Стабильность** на устройствах с экзотическими графическими чипами
+---
 
-Теперь вы можете наслаждаться тяжёлыми модпаками и красивой графикой без лишних «артефактов» и тормозов!
+## ✨ Возможности
+
+| | |
+|---|---|
+| 🚀 | Запуск почти всех версий Minecraft — от rd-132211 до 26.x снапшотов |
+| 📦 | Установка Forge, Fabric, NeoForge и других модлоадеров |
+| 🖥️ | Полноценная поддержка LWJGL2, LWJGL3 и GLFW |
+| 🌍 | Мультиязычный интерфейс |
+| ⚡ | **12+ графических рендеров** на выбор |
+
+---
+
+## 🎨 Поддерживаемые рендеры
+
+| Рендер | Описание | Рекомендация |
+|--------|----------|--------------|
+| **Holy GL4ES** | Стандартный рендер, работает на всех устройствах | 🟢 Универсальный |
+| **Zink (Vulkan)** | Рендеринг через Vulkan | 🟡 Для современных устройств |
+| **Freedreno** | Open-source драйвер для Adreno GPU | 🟢 Для Snapdragon |
+| **LTW** | OpenGL Core на GLES-обёртке | 🟢 Для 1.17+ |
+| **MobileGlues** | OpenGL 4.0 на GLES 3 | 🟢 С поддержкой шейдеров |
+| **ANGLE (Vulkan)** | Google-реализация GLES через Vulkan | 🟡 Экспериментальный |
+| **ANGLE (DirectX)** | Google-реализация GLES через DirectX | 🟡 Для эмуляции |
+| **VirGL** | Виртуальный GPU (для эмуляторов) | 🟡 Для VM |
+| **SwiftShader** | Программный рендеринг на CPU | 🔴 Для отладки |
+| **Panfrost** | Open-source драйвер для Mali GPU | 🟢 Для Mali |
+| **Turnip** | Open-source драйвер для Adreno GPU | 🟢 Для Snapdragon |
+| **LLVMpipe** | Программный рендеринг (CPU) | 🔴 Для отладки |
 
 ---
 
 ## 📥 Скачать
 
-Вы можете получить XunLauncher несколькими способами:
-
-| Способ | Описание |
-|--------|----------|
-| [**Releases**](https://github.com/Hinderchik/XunLauncher/releases) | Стабильные сборки |
-| **Google Play** | (скоро) |
-| [**GitHub Actions**](https://github.com/Hinderchik/XunLauncher/actions) | Свежие ночные сборки |
-| **Сборка из исходников** | Инструкции ниже |
+| Способ | Ссылка |
+|--------|--------|
+| **Стабильные сборки** | [Releases](https://github.com/Hinderchik/XunLauncher/releases) |
+| **Ночные сборки** | [GitHub Actions](https://github.com/Hinderchik/XunLauncher/actions) |
+| **Google Play** | *Скоро* |
 
 ---
 
 ## 🛠️ Сборка из исходников
 
-Для сборки вам потребуется JDK 17+ и Android SDK.
+### Требования
+- JDK 17+
+- Android SDK
 
-### На Linux / macOS
+### Команды
+
+#### Linux / macOS
 ```bash
 ./gradlew :app_pojavlauncher:assembleDebug
 ```
 
-### На Windows
+#### Windows
 ```bash
 .\gradlew.bat :app_pojavlauncher:assembleDebug
 ```
 
-Сборка автоматически загрузит все необходимые компоненты (OpenJDK, библиотеки рендеринга и т.д.).
+Все необходимые компоненты загрузятся автоматически.
 
 ---
 
-## 📋 Текущий план развития
+## 📋 План развития
 
 - [x] Интеграция MobileGlues
-- [ ] Полноценная система инстансов вместо профилей
+- [x] Добавление 7 новых рендеров
+- [ ] Система инстансов вместо профилей
 - [ ] Поддержка 1.21.5 «из коробки»
-- [ ] Импорт модпаков `.mrpack` и CurseForge `.zip`
-- [ ] Исправление проблем с Create и другими сложными модами
-- [ ] Улучшенный менеджер модов и модпаков
+- [ ] Импорт `.mrpack` и CurseForge `.zip`
+- [ ] Исправление проблем с модом Create
+- [ ] Менеджер модов и модпаков
 
 ---
 
 ## ⚠️ Известные проблемы
 
-- На некоторых физических мышах скорость курсора может быть низкой
-- На некоторых устройствах с Holy GL4ES могут быть искажения больших текстурных атласов
-- Остальные баги — см. [Issues](https://github.com/Hinderchik/XunLauncher/issues)
+| Проблема | Решение / Статус |
+|----------|------------------|
+| Низкая скорость мыши на некоторых физических мышах | В работе |
+| Искажения текстурных атласов на Holy GL4ES | В работе |
+| Другие баги | См. [Issues](https://github.com/Hinderchik/XunLauncher/issues) |
 
 ---
 
 ## 🤝 Участие в разработке
 
-Мы приветствуем любые вклады!
+Мы открыты к сотрудничеству!
 
-- 🐛 **Сообщайте об ошибках** — создавайте Issues
-- 🌐 **Помогайте с переводами** — мы используем Crowdin
-- 💻 **Присылайте Pull Requests** — с описанием изменений
+- 🐛 **Баги** — создавайте Issues с подробным описанием
+- 🌐 **Переводы** — помогайте через Crowdin
+- 💻 **Код** — присылайте Pull Requests
 
 ---
 
-## 📜 Лицензия
+## 📜 Лицензия и благодарности
 
-Проект распространяется под лицензией **GNU LGPLv3**.
+**Лицензия**: GNU LGPLv3
 
-### Благодарности и сторонние компоненты
+### Использованные проекты
 
-| Компонент | Лицензия |
-|-----------|----------|
+| Проект | Лицензия |
+|--------|----------|
 | [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) | GNU LGPLv3 |
 | [MojoLauncher](https://github.com/MojoLauncher/MojoLauncher) | GNU LGPLv3 |
-| [MobileGlues](https://github.com/mobileglues/mobileglues) | MIT |
+| [MobileGlues](https://github.com/mobileglues/mobileglues) | GNU LGPL-2.1 |
 | OpenJDK | GNU GPLv2 |
 | GLFW | zlib |
 | LWJGL2 / LWJGL3 | BSD |
 | Mesa 3D | MIT |
 | Authlib-Injector | AGPL-3.0 |
-| И другие... | См. полный список в LICENSE |
+
+Полный список — в файле LICENSE.
 
 ---
 
 ## 📱 Скриншоты
 
-> *Скоро здесь появятся скриншоты с демонстрацией работы MobileGlues!*
+> *Скоро появятся скриншоты с демонстрацией работы XunLauncher и всех рендеров!*
 
 ---
 
-## 📧 Контакты
+## 📬 Связь
 
-- **GitHub Issues** — для багов и предложений
+- [Issues](https://github.com/Hinderchik/XunLauncher/issues) — баги и предложения
 
 ---
-
-<p align="center">
-  <b>Играйте в Minecraft на Android с XunLauncher — графикой, которую вы заслуживаете!</b>
-</p>
 
 <p align="center">
   <a href="https://github.com/Hinderchik/XunLauncher">
     <img src="https://img.shields.io/badge/⭐%20Star%20on%20GitHub-30363D?style=for-the-badge&logo=github" alt="Star on GitHub">
   </a>
+  <a href="https://github.com/Hinderchik/XunLauncher/fork">
+    <img src="https://img.shields.io/badge/🍴%20Fork%20on%20GitHub-30363D?style=for-the-badge&logo=github" alt="Fork on GitHub">
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <b>С XunLauncher ваш Android — это полноценная платформа для Minecraft: Java Edition!</b>
 </p>
