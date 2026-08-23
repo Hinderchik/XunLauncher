@@ -509,4 +509,11 @@
     <string name="loading_screen_title">Waiting for a game window to appear…</string>
     <string name="loading_screen_booted">Ready - running on %1$s!</string>
     <string name="loading_screen_warning">If you are stuck here, the game might have crashed</string>
+    <string name="mcl_setting_renderer_angle_vulkan">ANGLE (Vulkan) - all versions, experimental</string>
+    <string name="mcl_setting_renderer_angle_directx">ANGLE (DirectX) - all versions, experimental</string>
+    <string name="mcl_setting_renderer_virgl">VirGL (Virtual GPU) - all versions, for emulators</string>
+    <string name="mcl_setting_renderer_swiftshader">SwiftShader (Software) - all versions, slow</string>
+    <string name="mcl_setting_renderer_panfrost">Panfrost (Mali) - 1.17+, Mali-only</string>
+    <string name="mcl_setting_renderer_turnip">Turnip (Adreno/Vulkan) - 1.17+, Adreno-only</string>
+    <string name="mcl_setting_renderer_llvmpipe">LLVMpipe (Software) - all versions, very slow</string>
 </resources>

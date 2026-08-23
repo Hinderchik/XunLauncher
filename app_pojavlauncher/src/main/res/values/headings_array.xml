@@ -6,6 +6,29 @@
         <item name="3">@string/mcl_setting_renderer_freedreno_kgsl</item>
         <item name="4">@string/mcl_setting_renderer_ltw</item>
         <item name="5">@string/mcl_setting_renderer_mobileglues</item>
+        <!-- 🆕 Новые рендеры -->
+        <item name="6">@string/mcl_setting_renderer_angle_vulkan</item>
+        <item name="7">@string/mcl_setting_renderer_angle_directx</item>
+        <item name="8">@string/mcl_setting_renderer_virgl</item>
+        <item name="9">@string/mcl_setting_renderer_swiftshader</item>
+        <item name="10">@string/mcl_setting_renderer_panfrost</item>
+        <item name="11">@string/mcl_setting_renderer_turnip</item>
+        <item name="12">@string/mcl_setting_renderer_llvmpipe</item>
+    </string-array>
+
+    <string-array name="renderer_values">
+        <item>opengles2</item> <!-- holy-gl4es with OpenGL ES 2/"3" -->
+        <item>vulkan_zink</item> <!-- zink with OpenGL (undef) -->
+        <item>freedreno_kgsl</item> <!-- freedreno gallium driver with OpenGL 4.6 -->
+        <item>opengles3_ltw</item> <!-- GL Core on GLES wrapper with GL3/4 -->
+        <item>mobileglues</item> <!-- MobileGlues plugin with OpenGL 4.0 on GLES 3 -->
+        <item>angle_vulkan</item> <!-- ANGLE with Vulkan backend -->
+        <item>angle_directx</item> <!-- ANGLE with DirectX backend (Windows/Emulation) -->
+        <item>virgl</item> <!-- VirGL virtual GPU (для эмуляторов/VMs) -->
+        <item>swiftshader</item> <!-- SwiftShader software renderer (CPU) -->
+        <item>panfrost</item> <!-- Panfrost driver for Mali GPUs (OpenGL 3.1+) -->
+        <item>turnip</item> <!-- Turnip driver for Adreno GPUs (Vulkan) -->
+        <item>llvmpipe</item> <!-- LLVMpipe software renderer (CPU) -->
     </string-array>
 
     <string-array name="menu_customcontrol">
@@ -36,17 +59,11 @@
         <item>@string/mcl_option_customcontrol</item>
     </string-array>
     
-    <string-array name="renderer_values">
-        <item>opengles2</item> <!-- holy-gl4es with OpenGL ES 2/"3" -->
-        <item>vulkan_zink</item> <!-- zink with OpenGL (undef) -->
-        <item>freedreno_kgsl</item> <!-- freedreno gallium driver with OpenGL 4.6 -->
-        <item>opengles3_ltw</item> <!-- GL Core on GLES wrapper with GL3/4 -->
-        <item>mobileglues</item> <!-- MobileGlues plugin with OpenGL 4.0 on GLES 3 -->
-    </string-array>
     <string-array name="download_source_names">
         <item>@string/global_default</item>
         <item>BMCLAPI</item>
     </string-array>
+    
     <string-array name="download_source_values">
         <item>default</item>
         <item>bmclapi</item>

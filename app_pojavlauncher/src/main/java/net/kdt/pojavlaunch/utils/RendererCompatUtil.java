@@ -42,6 +42,15 @@ public class RendererCompatUtil {
         boolean appHasLtw = new File(Tools.NATIVE_LIB_DIR, "libltw.so").exists();
         LibraryPlugin mobileGlues = LibraryPlugin.discoverPlugin(context, LibraryPlugin.ID_MOBILEGLUES_PLUGIN);
         boolean hasMobileGlues = mobileGlues != null && mobileGlues.checkLibraries("libmobileglues.so");
+        LibraryPlugin anglePlugin = LibraryPlugin.discoverPlugin(context, "com.google.angle");
+        boolean hasAngle = anglePlugin != null && anglePlugin.checkLibraries("libGLESv2_angle.so");
+        boolean hasVirGL = findVirGLPath() != null;
+        boolean hasSwiftShader = findSwiftShaderPath() != null;
+        boolean hasPanfrost = findPanfrostPath() != null;
+        boolean hasTurnip = findTurnipPath() != null;
+        boolean hasLLVMpipe = findLLVMpipePath() != null;
+        boolean isMali = GLInfoUtils.getGlInfo().isMali();
+        boolean isAdreno = GLInfoUtils.getGlInfo().isAdreno();
         List<String> rendererIds = new ArrayList<>(defaultRenderers.length);
         List<String> rendererNames = new ArrayList<>(defaultRendererNames.length);
         for(int i = 0; i < defaultRenderers.length; i++) {
@@ -52,6 +61,12 @@ public class RendererCompatUtil {
             if(rendererId.contains("freedreno") && (!(GLInfoUtils.getGlInfo().isAdreno()) || !deviceCompatibleMesa)) continue;
             if(rendererId.contains("ltw") && (!deviceHasOpenGLES3 || !appHasLtw)) continue;
             if(rendererId.contains("mobileglues") && (!deviceHasOpenGLES3 || !hasMobileGlues)) continue;
+            if (id.contains("angle") && !hasAngle) continue;
+            if (id.contains("virgl") && !hasVirGL) continue;
+            if (id.contains("swiftshader") && !hasSwiftShader) continue;
+            if (id.contains("panfrost") && (!hasPanfrost || !isMali)) continue;
+            if (id.contains("turnip") && (!hasTurnip || !isAdreno)) continue;
+            if (id.contains("llvmpipe") && !hasLLVMpipe) continue;
             rendererIds.add(rendererId);
             rendererNames.add(defaultRendererNames[i]);
         }
