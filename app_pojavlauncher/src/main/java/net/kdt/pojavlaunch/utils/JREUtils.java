@@ -68,6 +68,78 @@ public class JREUtils {
 
     }
 
+    private static String findMobileGluesPath(Context context) {
+        // 1. Через LibraryPlugin (самый правильный способ)
+        LibraryPlugin mobileGlues = LibraryPlugin.discoverPlugin(context, LibraryPlugin.ID_MOBILEGLUES_PLUGIN);
+        if (mobileGlues != null) {
+            // Проверяем nativeLibraryDir
+            if (mobileGlues.nativeLibraryDir != null) {
+                File libFile = new File(mobileGlues.nativeLibraryDir, "libmobileglues.so");
+                if (libFile.exists()) {
+                    Log.d("XunLauncher", "✅ Found MobileGlues at: " + libFile.getAbsolutePath());
+                    return libFile.getAbsolutePath();
+                }
+            }
+
+            // Ищем через sourceDir (для Android 8+)
+            try {
+                PackageManager pm = context.getPackageManager();
+                PackageInfo pkgInfo = pm.getPackageInfo(mobileGlues.packageName, 0);
+                String apkPath = pkgInfo.applicationInfo.sourceDir;
+                String basePath = apkPath.substring(0, apkPath.lastIndexOf('/'));
+
+                // Пробуем разные ABI
+                String[] abis = {"arm64", "arm64-v8a", "armeabi-v7a"};
+                for (String abi : abis) {
+                    File libFile = new File(basePath + "/lib/" + abi + "/libmobileglues.so");
+                    if (libFile.exists()) {
+                        Log.d("XunLauncher", "✅ Found MobileGlues at: " + libFile.getAbsolutePath());
+                        return libFile.getAbsolutePath();
+                    }
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                // Игнорируем
+            }
+        }
+    
+        // 2. Рекурсивный поиск в /data/app (на случай, если LibraryPlugin не сработал)
+        File dataApp = new File("/data/app");
+        if (dataApp.exists() && dataApp.isDirectory()) {
+            File[] dirs = dataApp.listFiles();
+            if (dirs != null) {
+                for (File dir : dirs) {
+                    if (dir.getName().contains("com.fcl.plugin.mobileglues")) {
+                        String[] abis = {"arm64", "arm64-v8a", "armeabi-v7a"};
+                        for (String abi : abis) {
+                            File libFile = new File(dir, "lib/" + abi + "/libmobileglues.so");
+                            if (libFile.exists()) {
+                                Log.d("XunLauncher", "✅ Found MobileGlues via recursive search: " + libFile.getAbsolutePath());
+                                return libFile.getAbsolutePath();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        // 3. Проверяем стандартные пути (на всякий случай)
+        String[] standardPaths = {
+            "/data/data/com.fcl.plugin.mobileglues/lib/libmobileglues.so",
+            "/data/app/com.fcl.plugin.mobileglues/lib/arm64/libmobileglues.so",
+            "/system/lib/libmobileglues.so",
+            "/system/lib64/libmobileglues.so",
+        };
+        for (String path : standardPaths) {
+            if (new File(path).exists()) {
+                Log.d("XunLauncher", "✅ Found MobileGlues at standard path: " + path);
+                return path;
+            }
+        }
+    
+        Log.e("XunLauncher", "❌ Could not find libmobileglues.so anywhere!");
+        return null;
+    }
+
     private static void overrideEnvVars(Map<String, String> envMap) throws IOException {
         File customEnvFile = new File(Tools.DIR_GAME_HOME, "custom_env.txt");
         if(!customEnvFile.exists() || !customEnvFile.isFile()) return;
@@ -258,7 +330,7 @@ public class JREUtils {
      * It will fallback if it fails to load the library.
      * @return The name of the loaded library
      */
-    public static String loadGraphicsLibrary(String renderer){
+    public static String loadGraphicsLibrary(Context context, String renderer){
         String renderLibrary;
         boolean useGles;
         boolean bypassNamespace = false;
@@ -280,7 +352,12 @@ public class JREUtils {
                 glesVersion = 3;
                 break;
             case "mobileglues":
-                renderLibrary = "libmobileglues.so";
+                renderLibrary = findMobileGluesPath(context);
+                if (renderLibrary == null) {
+                    Log.e("RENDER_LIBRARY", "Failed to find libmobileglues.so!");
+                    return null;
+                }
+                Log.d("RENDER_LIBRARY", "Found MobileGlues at: " + renderLibrary);
                 useGles = true;
                 glesVersion = 3;
                 break;
