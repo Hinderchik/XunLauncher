@@ -89,8 +89,8 @@ public class RendererCompatUtil {
         boolean hasPanfrost = findPanfrostPath() != null;
         boolean hasTurnip = findTurnipPath() != null;
         boolean hasLLVMpipe = findLLVMpipePath() != null;
-        boolean isMali = GLInfoUtils.getGlInfo().isMali;
-        boolean isAdreno = GLInfoUtils.getGlInfo().isAdreno;
+        boolean isMali = GLInfoUtils.getGlInfo().isArm();
+        boolean isAdreno = GLInfoUtils.getGlInfo().isAdreno();
         List<String> rendererIds = new ArrayList<>(defaultRenderers.length);
         List<String> rendererNames = new ArrayList<>(defaultRendererNames.length);
         for(int i = 0; i < defaultRenderers.length; i++) {
